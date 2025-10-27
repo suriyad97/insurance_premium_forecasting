@@ -1,0 +1,37 @@
+# config/config.yaml
+project:
+  name: "sales_forecasting"
+  version: "1.0.0"
+
+data:
+  raw_path: "data/raw"
+  processed_path: "data/processed"
+  files:
+    train: "train.csv"
+    stores: "stores.csv"
+    holidays: "holidays_events.csv"
+    oil: "oil.csv"
+    transactions: "transactions.csv"
+
+model:
+  target_variable: "sales"
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 3
+  
+  models:
+    - "Random Forest"
+    - "XGBoost" 
+    - "LightGBM"
+    - "Gradient Boosting"
+    - "Ridge"
+    - "Lasso"
+
+feature_engineering:
+  time_features: true
+  lag_features: true
+  encoding: true
+  rolling_windows: [7, 30]
+
+forecasting:
+  horizon: 6
