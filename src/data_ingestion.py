@@ -11,10 +11,7 @@ class DataIngestion:
         self.config = load_config()
         self.logger = setup_logging('data_ingestion', 'logs/data_ingestion.log')
         self.data_path = Path(self.config['data']['raw_path'])
-        
-
-
-    
+            
     def load_all_data(self) -> Dict[str, pd.DataFrame]:
         """Load all datasets from raw directory"""
         self.logger.info("Loading all datasets...")
@@ -55,6 +52,5 @@ class DataIngestion:
 
 if __name__ == "__main__":
     ingestion = DataIngestion()
-    datasets = ingestion.create_synthetic_data()
     loaded_datasets = ingestion.load_all_data()
     merged_data = ingestion.merge_datasets(loaded_datasets)
